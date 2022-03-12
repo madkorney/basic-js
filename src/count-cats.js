@@ -14,11 +14,44 @@ const { NotImplementedError } = require('../extensions/index.js');
  * ]) => 3`
  *
  */
-function countCats(/* matrix */) {
-  throw new NotImplementedError('Not implemented');
+function countCats(backyard) {
+  //throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
+  let catsCount = 0;
+  const cat = '^^';
+  let backyardXFence = backyard.length;
+  let backyardYFence = (Array.isArray(backyard[0])) ? backyard[0].length : 0; // no validation for marix with defferent rows length
+
+  if (backyardXFence == 0 || backyardYFence == 0) {
+    return catsCount;
+  }
+
+  catsCount = backyard.reduce((catsCountX, row) => {
+    return catsCountX + row.reduce((catsCountY, item) => {
+      if (item == cat) {catsCountY++};
+      return catsCountY;
+    } , 0)
+  }, 0);
+  return catsCount;
 }
 
 module.exports = {
   countCats
 };
+
+// console.log(countCats([
+//   ["^^", ".", null, 0, false, "", NaN, "^^", 2, true, "dasdas", 1],
+//   [2, null, 0, 1, ".", "dasdas", true, NaN, "", false, "^^", "^^"],
+//   [false, ".", 1, 0, "^^", null, "", 2, "dasdas", "^^", NaN, true],
+//   [".", false, 1, null, NaN, 2, 0, "dasdas", true, "^^", "", "^^"],
+//   [false, ".", 1, 0, "^^", true, null, "^^", "", NaN, 2, "dasdas"],
+//   [false, NaN, 1, 0, ".", "^^", null, true, "dasdas", "^^", 2, ""],
+//   [null, 1, NaN, true, ".", "^^", "^^", 2, "", false, "dasdas", 0],
+//   [null, NaN, "", false, ".", 1, 0, "^^", "dasdas", true, 2, "^^"],
+// ]));
+// console.log(
+// countCats([[0, 1, '^^'],
+//   [0, '^^', 2],
+//   ['^^', 1, 2]
+//   ])
+// );
