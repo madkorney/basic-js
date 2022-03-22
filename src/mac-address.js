@@ -31,8 +31,8 @@ function isMAC48Address(inputAddress) {
    return true; //it is a MAC address
 }
 
-let mac= 'FF-FF-FF-FF-FF-FF';
-console.log(mac, ' is a MAC? - ', isMAC48Address(mac));
+// let mac= 'FF-FF-FF-FF-FF-FF';
+// console.log(mac, ' is a MAC? - ', isMAC48Address(mac));
 // assert.strictEqual(isMAC48Address('00-1B-63-84-45-E6'), true);
 // assert.strictEqual(isMAC48Address('Z1-1B-63-84-45-E6'), false);
 // assert.strictEqual(isMAC48Address('not a MAC-48 address'), false);
